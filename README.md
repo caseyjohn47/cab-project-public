@@ -54,6 +54,7 @@ Next, use the following commands in terminal window within this folder to instal
 - createdb cabproject
 - psql -d cabproject -a -f (insert path to sql/ddl.sql file)
 - psql -d cabproject -a -f (insert path to sql/populaton.sql file)
+* This population file is NOT available in our public release for privacy reasons *
 
 NOTE: The following dependencies may need to be installed before the app can be run:
 
