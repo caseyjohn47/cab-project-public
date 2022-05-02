@@ -217,16 +217,25 @@ def type_query_handler():
 
     # handle choice and set graph data
     if request.form['query_choice'] == "1":
-        query = "SELECT * FROM TypeMonthlyCostAvg WHERE meterType = \'?\' ORDER BY month;"
-        query = query.replace('?', request.form['type'])
-        rows = connect(query)
+        if request.form['type'] == "Other":
+            query = "SELECT meterType, month, averageUsage FROM TypeMonthlyCostAvg WHERE meterType = \'Other\' ORDER BY month;"
+            rows = connect(query)
+            for row in rows:
+                labels.append(row[1])
+                values.append(row[2])
+            del labels[0]
+            del values[0]
+        else:
+            query = "SELECT * FROM TypeMonthlyCostAvg WHERE meterType = \'?\' ORDER BY month;"
+            query = query.replace('?', request.form['type'])
+            rows = connect(query)
+            for row in rows:
+                labels.append(row[1])
+                values.append(row[3])
+            del labels[0]
+            del values[0]
         graph = True
         graphType = "line"
-        for row in rows:
-            labels.append(row[1])
-            values.append(row[3])
-        del labels[0]
-        del values[0]
         title = "Average Cost of each Month for " + request.form['type']
 
     # handle choice and set graph data
