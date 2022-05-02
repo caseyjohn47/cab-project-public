@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Meter Monthly Cost</h1>
+
+<div class="text">
+	<h2>Summary</h2>
+
+	This page provides data about how much each meter costs during every month at TCNJ. This data could be especially useful when
+	considering what buildings each meter represents. For example, on average meter EL1 costs significantly more per month than 
+	any other electric meter. This would indicate that the building or buildings it represents may be able to cut down on costs.<br>
+	Another interesting query is using the "Get all monthly averages for a certain meter. Choose a meter: " query to select 
+	Estimated Co-Gen Electric. This shows a breakdown of how much energy is produced through this method each month.
+
+	<h2>Queries</h2>
+
+	<form action="/meter-query-handler" method="POST">
+		<input type="radio" name="query_choice" value="1" checked>
+		<label for="1">Get all monthly averages for a certain meter.</label>
+
+		<label for="meter">Choose a meter: </label>
+
+		<select id="meter" name="meter">
+			<option value="EL1" selected>EL1</option>
+			<option value="EL2">EL2</option>
+			<option value="EL3">EL3</option>
+			<option value="EL4">EL4</option>
+			<option value="EL5">EL5</option>
+			<option value="NG1">NG1</option>
+			<option value="NG2">NG2</option>
+			<option value="NG3">NG3</option>
+			<option value="NG4">NG4</option>
+			<option value="NG5">NG5</option>
+			<option value="NG6">NG6</option>
+			<option value="NG7">NG7</option>
+			<option value="NG8">NG8</option>
+			<option value="NG8 Error In Units">NG8 Error In Units</option>
+			<option value="NG9">NG9</option>
+			<option value="NG10">NG10</option>
+			<option value="NG11">NG11</option>
+			<option value="NG12">NG12</option>
+			<option value="NG13">NG13</option>
+			<option value="NG14">NG14</option>
+			<option value="NG15">NG15</option>
+			<option value="NG16">NG16</option>
+			<option value="Estimated Co-Gen Electric">Estimated Co-Gen Electric</option>
+			<option value="Fuel Oil Deliveries">Fuel Oil Deliveries</option>
+		</select> 
+		<br>
+		
+		<input type="radio" name="query_choice" value="2">
+		<label for="2">Get the monthly averages for each meter for a certain month.</label>
+
+		<label for="month">Choose a month: </label>
+
+		<select id="month" name="month">
+			<option value="1" selected>January</option>
+			<option value="2">February</option>
+			<option value="3">March</option>
+			<option value="4">April</option>
+			<option value="5">May</option>
+			<option value="6">June</option>
+			<option value="7">July</option>
+			<option value="8">August</option>
+			<option value="9">September</option>
+			<option value="10">October</option>
+			<option value="11">November</option>
+			<option value="12">December</option>
+		</select> 
+		<br>
+
+		<input type="radio" name="query_choice" value="3">
+		<label for="3">Average monthly cost per meter</label><br>
+
+		<input type="radio" name="query_choice" value="4">
+		<label for="4">Month with highest average cost per meter</label><br>
+
+		<input type="radio" name="query_choice" value="5">
+		<label for="5">Month with lowest average cost per meter</label><br>
+		
+		<br />  
+		<center>
+			<input class="button" type="submit" value="Submit">
+		</center>
+	</form>
+
+</div>
+
+{% endblock %}

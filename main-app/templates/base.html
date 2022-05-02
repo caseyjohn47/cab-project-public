@@ -1,0 +1,109 @@
+<html>
+    <!-- Headers -->
+    <head>
+
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>Cab Project</title>
+        {% endif %}
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    </head>
+
+    <body>
+
+        <!-- Nav Bar -->
+        <div class="topnav">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('overall_monthly_cost') }}">Overall Monthly Cost</a>
+            <a href="{{ url_for('meter_monthly_cost') }}">Meter Monthly Cost</a>
+            <a href="{{ url_for('type_monthly_cost') }}">Type Monthly Cost</a>
+
+        </div>
+
+        <!-- Content from extended pages goes in block -->
+        {% block content %}{% endblock %}
+        <br> 
+
+        <!-- If there is data sent in, then begin process of building table and graphs -->
+        {% if rows %}
+
+            <!-- Title of returned data -->
+            <center>
+                <h2>{{ title }}</h2>
+            </center>
+
+            <!-- Parent class for formatting data -->
+            <div class="parent">
+
+                <!-- Create table from data -->
+                <div class="child">
+                    <table>
+                            <!-- headers -->
+                            <tr>
+                            {% for name in headers %}
+                                <th>{{ name }}</th>
+                            {% endfor %}
+                            </tr>
+
+                            <!-- normal data -->
+                            {%for row in rows%}
+                                <tr>
+                                {%for col in row%}
+                                    <td>{{col}}</td>
+                                {%endfor%}
+                                </tr>
+                            {%endfor%}
+
+                        
+                    </table>
+                </div>
+        {% endif %}
+
+        <!-- Create graph if applicable -->
+        {% if graph %}
+                <div class="child">
+
+                    <canvas id="myCanvas" width="400" height="400"></canvas>
+                    <script>
+                        Chart.defaults.global.responsive = false;
+                        new Chart(document.getElementById("myCanvas").getContext("2d"), {
+                            type: '{{graphType}}',
+                            data: {
+                                labels: 
+                                [{% for item in labels %}
+                                "{{ item }}",
+                                {% endfor %}],
+                                datasets: [{
+                                    data : [{% for item in values %}
+                                        {{item}},
+                                        {% endfor %}],
+                                    borderColor: "#3e95cd",
+                                    label: "Cost",
+                                    fill: false
+                                    }
+                                ]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        scaleLabel: {
+                                            display: true,
+                                            labelString: 'Cost'
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    </script>
+
+                </div>
+
+            </div>
+        {% endif %}
+
+    </body>
+</html>

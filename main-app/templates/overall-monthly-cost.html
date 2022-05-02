@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="text">
+    <h1>Overall Monthly Cost</h1>
+
+    <h2>Summary</h2>
+
+    This page provides data about how much energy costs during every month at TCNJ. The most expensive month is November, while the
+    least expensive is October. Overall, the months between March and July appeared to be the least expensive stretch.
+    
+    <h2>Queries</h2>
+
+    <form action="/overall-query-handler" method="POST">
+
+        <input type="radio" name="query_choice" value="1" checked>
+        <label for="1">Average cost of every month</label><br>
+        <input type="radio" name="query_choice" value="2">
+        <label for="2">Month with highest average cost</label><br>
+        <input type="radio" name="query_choice" value="3">
+        <label for="3">Month with lowest average cost</label><br>
+        
+        <br />            
+        <center>
+            <input class="button" type="submit" value="Submit">
+        </center>
+
+    </form>
+
+</div>
+
+{% endblock %}

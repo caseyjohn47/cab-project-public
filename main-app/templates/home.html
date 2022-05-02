@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="chgfont">Cab Project - Supply</h1>
+
+<center>
+    Group Members: Casey Lewis, Madison Franco, Thendral Prabu, Alexander D'Amico, Alex Panarese, Farhan Ahsan
+</center>
+
+<div class = "text">
+    <h3 class="chgfont">Overview</h3>
+
+    Our CAB project examines the question of "when is it most economical and least polluting for The College of New Jersey campus to produce its own power as opposed to using an electrical grid on both a site and source basis?" Our solution is a dynamic Flask | Python | Psycopg2 | PostgreSQL web application.
+
+    <h3 class="chgfont">How to Use</h3>
+
+    Our application is split up into three main pages that examine our data from different perspectives. On each page we provide queries that display insightful data about our project. In addition, we also give a summary of our findings.
+
+    <h3 class="chgfont">Overall Monthly Cost</h4>
+
+    Overall Monthly Cost takes a look at how much TCNJ spends on energy every month on average. It allows the user to take a look at every month at the same time as well as search for the most expensive and least expensive months.
+
+    <h3 class="chgfont">Meter Monthly Cost</h4>
+
+    Meter Monthly Cost examines the average monthly cost of energy for each meter on campus. It allows the user to seach for every monthly average for a specific meter and search for every meter's average for a specific month. It can also find the month that costs the most or the least for each meter. 
+
+    <h3 class="chgfont">Type Monthly Cost</h4>
+
+    Type Monthly Cost examines the average monthly cost of energy for each type of meter on campus. It allows the user to seach for every monthly average for a specific type and search for every type's average for a specific month. It can also find the month that costs the most or the least for each type. 
+
+</div>
+{% endblock %}
