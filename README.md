@@ -74,4 +74,4 @@ Next, use the following commands in terminal window within the app folder to run
 
 ## Wiki <a name = "wiki"></a>
 
-Please check out our [Wiki](https://github.com/TCNJ-degoodj/cab-project-1-1/wiki) for all important project documents.
+Please check out our [Wiki](https://github.com/caseyjohn47/cab-project-public/wiki) for all important project documents.
